@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --font-primary: 'Plus Jakarta Sans', sans-serif;
+  --font-heading: 'Outfit', sans-serif;
+  
+  /* Light Skeuomorphic Colors */
+  --bg-main: #f0f3f8;
+  --bg-sidebar: #e6ebf4;
+  --bg-card: #ffffff;
+  --bg-input: #f8fafc;
+  
+  --primary: #4f46e5;
+  --primary-hover: #3730a3;
+  --secondary: #64748b;
+  --accent: #e11d48;
+  
+  --text-main: #1e293b;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  
+  --border-light: #e2e8f0;
+  
+  /* Skeuomorphic Shadows */
+  --shadow-raised: 6px 6px 12px #d1d9e6, -6px -6px 12px #ffffff;
+  --shadow-raised-sm: 3px 3px 6px #d1d9e6, -3px -3px 6px #ffffff;
+  --shadow-recessed: inset 3px 3px 6px #cbd5e1, inset -3px -3px 6px #ffffff;
+  --shadow-recessed-light: inset 2px 2px 4px #e2e8f0, inset -2px -2px 4px #ffffff;
+  
+  --success: #10b981;
+  --error: #ef4444;
+  
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.25s, border-color 0.25s, box-shadow 0.2s, transform 0.15s;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--bg-main);
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Skeuomorphic Card Panel */
+.glass-panel, .skuo-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: var(--shadow-raised);
+  border-radius: var(--radius-lg);
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.2px;
+  font-family: var(--font-heading);
+}
+
+.form-input {
+  width: 100%;
+  padding: 12px 16px;
+  background-color: var(--bg-input);
+  border: 1px solid #d1d9e6;
+  border-radius: var(--radius-md);
+  color: var(--text-main);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  outline: none;
+  box-shadow: var(--shadow-recessed-light);
+}
+
+.form-input:focus {
+  background-color: #ffffff;
+  border-color: var(--primary);
+  box-shadow: inset 1px 1px 3px #cbd5e1, 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.form-input::placeholder {
+  color: var(--text-dim);
+}
+
+/* Tactile Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  outline: none;
+  text-decoration: none;
+  gap: 8px;
+  transition: all 0.15s ease-in-out;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, var(--primary) 100%);
+  color: white;
+  box-shadow: var(--shadow-raised-sm);
+  border: none;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%);
+  box-shadow: 4px 4px 10px #cbd5e1, -4px -4px 10px #ffffff;
+}
+
+.btn-primary:active:not(:disabled) {
+  box-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.25);
+  transform: scale(0.98);
+}
+
+.btn-primary:disabled {
+  background: #e2e8f0;
+  color: var(--text-dim);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: #f1f5f9;
+  color: var(--text-main);
+  border: 1px solid #d1d9e6;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.btn-secondary:hover {
+  background: #e2e8f0;
+}
+
+.btn-secondary:active {
+  box-shadow: var(--shadow-recessed-light);
+  transform: scale(0.98);
+}
+
+/* Alerts and Notifications */
+.alert {
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid transparent;
+  box-shadow: var(--shadow-raised-sm);
+}
+
+.alert-danger {
+  background: #fef2f2;
+  color: #991b1b;
+  border-color: #fee2e2;
+}
+
+.alert-success {
+  background: #ecfdf5;
+  color: #065f46;
+  border-color: #d1fae5;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.35s ease-out forwards;
+}
+
+/* Utility layout helper */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
+
+/* Print Styles Override - Ensures only the bill sheet prints, hiding sidebars and buttons */
+@media print {
+  body, html, #root {
+    background: #ffffff !important;
+    color: #000000 !important;
+    min-height: auto !important;
+  }
+  
+  /* Hide UI elements during print */
+  .no-print,
+  aside,
+  button,
+  .btn {
+    display: none !important;
+  }
+
+  /* Expand the main content and remove shadows/outer padding */
+  .page-container,
+  .main-content {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-shadow: none !important;
+    background: transparent !important;
+  }
+
+  /* Skeuomorphic container styles removal for print */
+  .glass-panel,
+  .invoice-card {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* Ensure items table table-layout is auto for printing */
+  table {
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border-bottom: 1px solid #000000 !important;
+    color: #000000 !important;
+  }
+}
+
+/* Bottom Profile widget hover style */
+.profile-widget-btn:hover {
+  background-color: #f8fafc !important;
+  border-color: var(--primary) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15) !important;
+}
+
